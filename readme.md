@@ -127,16 +127,12 @@ mesh = simplify_mesh_smart(
   2) QEM 简化到目标
 - 若 Open3D 支持 `RaycastingScene`（0.16+），会通过采样点到原网格距离做误差控制，超限会回退（增加目标三角形数）
 
-> 你当前示例 `max_error=1.25` 偏“宽松”。如果是城市场景想更贴合原表面，可尝试 0.1~0.3。
-
 ## 输出说明
 
 - 每个 tile 输出一个 OBJ（仅几何）
 - `metadata.xml` 写入 ENU 原点信息，格式：
   - `SRS`：`ENU:lat0,lon0`
   - `SRSOrigin`：`0,0,0`
-
-当前脚本中存在 UV 相关函数（`add_planar_uv`）但**未在主流程启用**，也没有导出纹理图片与 MTL；`write_obj_no_texture()` 会确保 OBJ 内不包含 `mtllib/usemtl` 行。
 
 ## 性能与质量建议
 
